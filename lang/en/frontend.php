@@ -6,5 +6,6 @@ return [
     'name' => 'Categories Name',
     'submit' => 'Submit',
     'cat-header'=> 'Create Category',
-    'cat-all'=> 'All Categories'
+    'cat-all'=> 'All Categories',
+    'edit'=> 'Edit'
 ];

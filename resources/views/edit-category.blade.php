@@ -37,39 +37,21 @@
     </ul>
     <div class="container">
         <h1>{{ __('frontend.cat-header')}}</h1>
-        <form class="w-50 m-auto mt-5" action="{{route('category.store')}}"  method="POST">
+        <form class="w-50 m-auto mt-5" action="{{route('category.update')}}"  method="POST">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputName1" class="form-label">{{__('frontend.name_ar')}}</label>
-                <input name="name[ar]" type="text" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
+                <input name="name[ar]" type="text" value="{{ $category->getTranslation('name', 'ar') }}" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
                 @error('name.ar') <p class="text-danger">{{ $message }}</p> @enderror
             </div>
             <div class="mb-3">
                 <label for="exampleInputName1" class="form-label">{{__('frontend.name_en')}}</label>
-                <input name="name[en]" type="text" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
+                <input name="name[en]" type="text" value="{{ $category->getTranslation('name', 'en') }}" class="form-control" id="exampleInputName1" aria-describedby="nameHelp">
                 @error('name.en') <p class="text-danger">{{ $message }}</p> @enderror
             
             </div>
             <button type="submit" class="btn btn-primary">{{__('frontend.submit')}}</button>
         </form>
-
-        <div class="mb-3">
-            <h1 class="mt-5">{{__('frontend.name')}}</h1>
-        
-
-          <table class="table"> 
-            <tr>
-                @foreach($categories as $category)
-                    <td>
-                        {{ $category->getTranslation('name', App::currentLocale()) }}
-                    </td>
-                    <td>
-                        <a class="btn btn-primary" href="{{ route('category.edit',$category->id) }}">{{__('frontend.edit')}}</a>
-                    </td>
-                @endforeach
-            </tr>
-          </table>
-        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

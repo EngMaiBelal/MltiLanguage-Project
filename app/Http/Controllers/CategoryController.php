@@ -16,7 +16,7 @@ class CategoryController extends Controller
     
     public function store(Request $request){
         $request->validate([
-            'name.*'=>['required'],
+            'name.*'=>['required', 'unique_translation:categories'],
         ]);
         
         $category = Category::create([
@@ -27,5 +27,14 @@ class CategoryController extends Controller
             return redirect()->back()->with("error", "something went wrong");
         }
         return redirect()->back()->with("success", "Category added Successfully");
+    }
+    
+    public function edit($id){
+        $category = Category::findorfail($id);
+        // dd($category);
+        return view('edit-category', compact('category'));
+    }
+    public function update(Request $request){
+        dd($request);
     }
 }
